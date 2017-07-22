@@ -70,7 +70,7 @@ int main(void)
 			if(m[i][j]==1)
 				printf("#");
 			if(m[i][j]==0)
-				printf("@");
+				printf(" ");
 			}
 			printf("\n");
 		}

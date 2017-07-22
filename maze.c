@@ -10,30 +10,30 @@ int VistMaze(int maze[][8], int i, int j)
 {  
     int end = 0;  
   
-    maze[i][j] = 2;  
+      maze[i][j] = 2;  
       
     if (i == END_I && j == END_J){  
         end = 1;  
     }  
     if (end != 1 && j + 1 <= END_J && maze[i][j + 1] == 0){     
         if (VistMaze(maze, i, j + 1) == 1)  
-            return 1;  
+            end = 1;  
     }  
     if (end != 1 && i + 1 <= END_I && maze[i + 1][j] == 0){ 
         if (VistMaze(maze, i + 1, j) == 1)  
-            return 1;  
+            end = 1;  
     }  
     if (end != 1 && j - 1 >= START_J && maze[i][j - 1] == 0){ 
         if (VistMaze(maze, i, j - 1) == 1)  
-            return 1;  
+            end = 1;  
     }  
     if (end != 1 && i - 1 >= START_I && maze[i - 1][j] == 0){    
         if (VistMaze(maze, i - 1, j) == 1)  
-            return 1;  
+            end = 1;  
     } 
-    if (end != 1){  
-        maze[i][j] = 0;  
-    }  
+      if (end != 1){  
+          maze[i][j] = 0;  
+      }  
   
     return end;  
 }  
