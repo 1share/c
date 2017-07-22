@@ -12,6 +12,7 @@ int run(int (*m)[R+1], int i, int j)
 {
 	int e = 0;
 
+	//默认当前节点是能走通迷宫的，打一个标记2，以区别0值的情况
 	m[i][j] = 2;
 
 	if (i==D &&  j == R) 
@@ -20,20 +21,20 @@ int run(int (*m)[R+1], int i, int j)
 	if (e!=1 && j+1<=R && m[i][j+1] == 0)
 		if (run(m,i,j+1)==1)
 			e=1;
-	
+
 	if (e!=1 && i+1<=D && m[i+1][j] == 0)
 		if (run(m,i+1,j)==1)
 			e=1;
-	
+
 	if (e!=1 && j-1>=L && m[i][j-1] == 0)
 		if (run(m,i,j-1)==1)
 			e=1;
-	
+
 	if (e!=1 && i-1>=U && m[i-1][j] == 0)
 		if (run(m,i-1,j)==1)
 			e=1;
-	
 
+	//增加走过到的地方，被标记为2了，要清除一下，恢复为原来的值0	
 	if(e!=1)
 		m[i][j]=0;
 
@@ -42,7 +43,7 @@ int run(int (*m)[R+1], int i, int j)
 }
 
 
-  
+
 int main(void)  
 {  
 	int i, j;  
@@ -71,8 +72,8 @@ int main(void)
 				printf("#");
 			if(m[i][j]==0)
 				printf(" ");
-			}
-			printf("\n");
 		}
+		printf("\n");
+	}
 
 }  
